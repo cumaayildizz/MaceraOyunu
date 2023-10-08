@@ -15,7 +15,67 @@ public class Inventory {
         this.armor = new Armor(-1 , "Ciplak" , 0 , 0);
     }
 
-    public void snakeLoot(){
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    /////////////////////////////////////////////////////
+    public boolean isFood() {
+        return food;
+    }
+
+    public void setFood(boolean food) {
+        this.food = food;
+    }
+
+    public boolean isWater() {
+        return water;
+    }
+
+    public void setWater(boolean water) {
+        this.water = water;
+    }
+
+    public boolean isFirewood() {
+        return firewood;
+    }
+
+    public void setFirewood(boolean firewood) {
+        this.firewood = firewood;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Monster getMonster() {
+        return monster;
+    }
+
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
+}
+
+/*
+ public void snakeLoot(){
         String yesOrNo;
         int snakeLoot = (int)(Math.random() * 1000);
         if (snakeLoot >= 0  &&  snakeLoot < 150){
@@ -95,61 +155,4 @@ public class Inventory {
 
         }
     }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    public Armor getArmor() {
-        return armor;
-    }
-
-    public void setArmor(Armor armor) {
-        this.armor = armor;
-    }
-
-    /////////////////////////////////////////////////////
-    public boolean isFood() {
-        return food;
-    }
-
-    public void setFood(boolean food) {
-        this.food = food;
-    }
-
-    public boolean isWater() {
-        return water;
-    }
-
-    public void setWater(boolean water) {
-        this.water = water;
-    }
-
-    public boolean isFirewood() {
-        return firewood;
-    }
-
-    public void setFirewood(boolean firewood) {
-        this.firewood = firewood;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Monster getMonster() {
-        return monster;
-    }
-
-    public void setMonster(Monster monster) {
-        this.monster = monster;
-    }
-}
+ */

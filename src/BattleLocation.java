@@ -42,12 +42,11 @@ public abstract class BattleLocation extends Location {
         System.out.print("Secimini yap: ");
         String selectLifeCase = scanner.nextLine().toUpperCase();
         System.out.println("=============================================================================");
-        //int counter = 0 ;
         if(selectLifeCase.equals("S")  &&  combat(monsNumber)){
             System.out.println(this.getName() + " tum " + this.getMonster().getMonsterName() + " kestiniz.");
             if (getMonster().getMonsterID() == 4 ){
                 System.out.println(this.getName() + " basarili bir sekilde gectiniz.");
-                getPlayer().getInventory().snakeLoot();
+                snakeLoot();
             }
             if (getAward().equals("Yemek")  &&  getPlayer().getInventory().isFood() == false ){
                 System.out.println(this.getName() + " basarili bir sekilde gectiniz." + this.getAward() + " kazandiniz.");
@@ -82,7 +81,7 @@ public abstract class BattleLocation extends Location {
 
     public void afterHit(){
         System.out.println("Caniniz : " + this.getPlayer().getHealth());
-        System.out.println(this.getMonster().getMonsterName() + "Cani : " + this.getMonster().getMonsterHealth());
+        System.out.println( this.getMonster().getMonsterName() + "Cani : " + this.getMonster().getMonsterHealth());
     }
 
     public boolean combat(int monsterNumber){  //combat metodu false donene kadar savasa devam et
@@ -181,6 +180,85 @@ public abstract class BattleLocation extends Location {
         System.out.println("Saglik :" + this.getMonster().getMonsterHealth());
         System.out.println("Hasar  :" + getMonster().randomMonsterDamage());
         System.out.println("Ganimet:" +this.getMonster().getMonsterLoot());
+    }
+
+
+    public void snakeLoot(){
+        String yesOrNo;
+        int snakeLoot = (int)(Math.random() * 1000);
+        if (snakeLoot >= 0  &&  snakeLoot < 150){
+
+            if (snakeLoot >= 0  &&  snakeLoot <= 30){
+                System.out.println( getPlayer().getInventory().getWeapon().getWeaponName() + "kazandiniz");
+                System.out.print("Silahi kusanmak istiyorsan < Y > istemiyorsan < N > bas : ");
+                yesOrNo = scanner.nextLine().toUpperCase();
+                if (yesOrNo.equals("Y")){
+                    getPlayer().getInventory().setWeapon(new Weapon("Tufek" , 3 , 7 , 45));
+                }
+
+            }
+            if (snakeLoot > 30  &&  snakeLoot <= 90){
+                System.out.println( getPlayer().getInventory().getWeapon().getWeaponName() + "kazandiniz");
+                System.out.print("Silahi kusanmak istiyorsan < Y > istemiyorsan < N > bas : ");
+                yesOrNo = scanner.nextLine().toUpperCase();
+                if (yesOrNo.equals("Y")){
+                    getPlayer().getInventory().setWeapon(new Weapon("Tabanca" , 2 , 3 , 35));
+                }
+            }
+            if (snakeLoot > 90  &&  snakeLoot < 150){
+                System.out.println( getPlayer().getInventory().getWeapon().getWeaponName() + "kazandiniz");
+                System.out.print("Silahi kusanmak istiyorsan < Y > istemiyorsan < N > bas : ");
+                yesOrNo = scanner.nextLine().toUpperCase();
+                if (yesOrNo.equals("Y")){
+                    getPlayer().getInventory().setWeapon(new Weapon("Kilic" , 1 , 2 , 25));
+                }
+            }
+
+        }else if (snakeLoot >= 150  &&  snakeLoot < 300){
+
+            if (snakeLoot >= 150  &&  snakeLoot <= 180){
+                System.out.println(getPlayer().getInventory().getArmor().getArmorName() + " zirh kazandiniz");
+                System.out.print("Zirhi kusanmak istiyorsan < Y > istemiyorsan < N > bas : ");
+                yesOrNo = scanner.nextLine().toUpperCase();
+                if (yesOrNo.equals("Y")){
+                    getPlayer().getInventory().setArmor(new Armor(1 , "Agir" , 5 , 40));
+                }
+            }
+            if (snakeLoot > 180  &&  snakeLoot <= 240){
+                System.out.println( getPlayer().getInventory().getArmor().getArmorName() + " zirh kazandiniz");
+                System.out.print("Zirhi kusanmak istiyorsan < Y > istemiyorsan < N > bas : ");
+                yesOrNo = scanner.nextLine().toUpperCase();
+                if (yesOrNo.equals("Y")){
+                    getPlayer().getInventory().setArmor(new Armor(2 , "Orta" , 3 , 25));
+                }
+            }
+            if (snakeLoot > 240  &&  snakeLoot < 300){
+                System.out.println( getPlayer().getInventory().getArmor().getArmorName() + " zirh kazandiniz");
+                System.out.print("Zirhi kusanmak istiyorsan < Y > istemiyorsan < N > bas : ");
+                yesOrNo = scanner.nextLine().toUpperCase();
+                if (yesOrNo.equals("Y")){
+                    getPlayer().getInventory().setArmor(new Armor(1 , "Hafif" , 1 , 15));
+                }
+            }
+        }else if (snakeLoot >= 300  &&  snakeLoot < 650){
+
+            if (snakeLoot >= 300  &&  snakeLoot <= 350){
+                getPlayer().setMoney(getPlayer().getMoney() + 10);
+                System.out.println("10 coin kazandiniz");
+            }
+            if (snakeLoot > 350  &&  snakeLoot <= 425){
+                getPlayer().setMoney(getPlayer().getMoney() + 10);
+                System.out.println("5 coin kazandiniz");
+            }
+            if (snakeLoot > 425  &&  snakeLoot < 650){
+                getPlayer().setMoney(getPlayer().getMoney() + 1);
+                System.out.println("10 coin kazandiniz");
+            }
+
+        }else {
+            System.out.println("Bugun sansli gununde degilsin. Hicbir sey kazanamadin :((( ");
+
+        }
     }
 
 
